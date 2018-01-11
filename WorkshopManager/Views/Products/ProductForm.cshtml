@@ -1,0 +1,49 @@
+﻿@model WorkshopManager.Models.ViewModels.ProductFormViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Product</h2>
+@using (Html.BeginForm("Save", "Products"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Product.Name)
+        @Html.TextBoxFor(m => m.Product.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Product.Name)
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m=>m.Product.ModelNo)
+        @Html.TextBoxFor(m => m.Product.ModelNo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Product.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Product.Price)
+        @Html.TextBoxFor(m => m.Product.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Product.Price)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Product.Stock)
+        @Html.TextBoxFor(m => m.Product.Stock, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Product.Stock)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m=>m.Product.ProductTypeId.Name)
+        @Html.DropDownListFor(m => m.Product.ProductTypeId.Name, new SelectList(Model.ProductTypes,"Id","Name"),"Select Product Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Product.ProductTypeId.Name)
+    </div>
+
+    <div class="checkbox">
+        <label>
+            <input type="checkbox"> I am Not A Robot
+        </label>
+    </div>
+    @Html.HiddenFor(m => m.Product.Id)
+    @Html.AntiForgeryToken() //Protects From Cross-Site Frogery Attacks
+    <button type="submit" class="btn btn-primary"> Save</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

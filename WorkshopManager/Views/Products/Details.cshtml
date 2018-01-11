@@ -1,0 +1,32 @@
+﻿@model WorkshopManager.Models.ViewModels.AllProductsViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All Details of Products</h2>
+<table class="table table-responsive">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Model Number</th>
+        <th>Price</th>
+        <th>Number In Stock</th>
+        <th>Service Charge</th>
+        <th></th>
+
+    </tr>
+    @foreach (var product in Model.Product)
+    {
+
+        <tr>
+            <td>@product.Id</td>
+            <td>@product.Name</td>
+            <td>@product.ModelNo</td>
+            <td>Nrs.@product.Price</td>
+            <td>@product.Stock</td>
+            <td>@product.ProductTypeId.ServiceCharge%</td> 
+            
+        </tr>
+    }
+</table>

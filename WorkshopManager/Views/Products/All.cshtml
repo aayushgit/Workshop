@@ -1,0 +1,25 @@
+﻿@model WorkshopManager.Models.ViewModels.AllProductsViewModel
+@{
+    ViewBag.Title = "All";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All Products</h2>
+<a class="btn btn-primary" href="New">New Product</a>
+<form class="form-group"></form>
+<table class="table table-responsive table-hover">
+    <tr>
+        <th>Products</th>
+        <th></th>
+    </tr>
+
+    @foreach (var product in Model.Product)
+    {
+        <tr>
+            <td><a href="Details/@product.Id.ToString()">@product.Name</a></td>
+            <td><a href="Edit/@product.Id.ToString()">Edit</a></td>
+        </tr>
+
+    }
+
+</table>

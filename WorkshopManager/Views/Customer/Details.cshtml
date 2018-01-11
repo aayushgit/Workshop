@@ -1,0 +1,23 @@
+﻿@model WorkshopManager.Models.ViewModels.AllCustomersViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All Details of Customers</h2>
+<table class="table table-responsive">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Contact</th>
+    </tr>
+    @foreach (var customer in Model.Customer)
+    {
+
+        <tr>
+            <td>@customer.Id</td>
+            <td>@customer.Name</td>
+            <td>@customer.Contact</td>
+        </tr>
+    }
+</table>
